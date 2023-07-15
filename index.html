@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subscription Form</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create Subscription</h1>
+    <form id="subscription-form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" required>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <label for="expiry-month">Expiry Month:</label>
+            <input type="text" id="expiry-month" required>
+          </div>
+          <div class="col">
+            <label for="expiry-year">Expiry Year:</label>
+            <input type="text" id="expiry-year" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" required>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" required>
+      </div>
+      <button type="submit">Create Subscription</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
