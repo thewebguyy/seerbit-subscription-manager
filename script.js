@@ -19,22 +19,26 @@ document.getElementById("subscription-form").addEventListener("submit", function
     amount: amount
   };
 
-  // Make API call to create subscription
-  var seerbit = require("seerbit");
-
-  seerbit.create_subscription(subscription)
-    .then(function(response) {
-      if (response.status === "SUCCESS") {
-        console.log("Subscription created successfully");
-        // Handle success response
-        alert("Subscription created successfully!");
+  // Make AJAX request to server-side API endpoint
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/create-subscription", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.status === "SUCCESS") {
+          console.log("Subscription created successfully");
+          alert("Subscription created successfully!");
+        } else {
+          console.log("Error creating subscription:", response.message);
+          // Handle error response
+        }
       } else {
-        console.log("Error creating subscription:", response.message);
-        // Handle error response
+        console.log("Error creating subscription:", xhr.status);
+        // Handle error status
       }
-    })
-    .catch(function(error) {
-      console.log("Error creating subscription:", error);
-      // Handle error case
-    });
+    }
+  };
+  xhr.send(JSON.stringify(subscription));
 });
